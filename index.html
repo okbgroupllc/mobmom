@@ -32,15 +32,39 @@ tr:last-child td{border-bottom:0}
    going with it is a proven loser. */
 .tag{border:1px solid var(--navy);border-radius:3px;padding:1px 5px;font-size:10px;
      text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+/* Game cards: one per game, all three markets, both sides, AN-style. */
+.gm{border-bottom:1px solid #eef1f5;padding:10px 14px 12px}
+.gm:last-child{border-bottom:0}
+.gm.fin{background:#fafbfc}.gm.fin .gmt{opacity:.62}
+.gmh{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;
+     color:var(--mut);margin-bottom:4px}
+.gmh .k{font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.03em}
+.gmt{table-layout:fixed}
+.gmt th,.gmt td{border-bottom:0;padding:4px 6px;font-size:13px}
+.gmt th{background:none;color:var(--mut);font-size:10px;padding-bottom:2px}
+.gmt th:first-child,.gmt td.tm{text-align:left;width:22%}
+.gmt td.tm{font-weight:700;font-size:15px}
+.ln{font-variant-numeric:tabular-nums}.od{color:var(--mut);font-size:12px}
+/* The split is the whole point of the page, so it sits under every price, not just
+   the MOBMOM one -- a 45/65 means nothing without the 55/35 opposite it. */
+.sp{font-size:11px;color:var(--mut);font-variant-numeric:tabular-nums}
+.mobc{background:#eaf4ff;border-radius:6px;box-shadow:inset 0 0 0 1px #b7d4f0}
+.mobc .sp{color:var(--blue);font-weight:700}
+.na{color:#c3cad3}
+.mobf{margin-top:8px;font-size:12px;border-top:1px dashed #dde3ea;padding-top:7px}
+.mobf .lbl{background:var(--navy);color:#fff;border-radius:4px;padding:1px 6px;
+           font-size:10px;text-transform:uppercase;letter-spacing:.04em;margin-right:6px}
+.mobf .num{font-weight:700;font-variant-numeric:tabular-nums}
+.mobf .sub{color:var(--mut)}
 </style></head><body>
 <header><h1>MOBMOM Engine — Weekly Picks</h1>
-<p>Minority of bets, majority of the money. Generated 2026-11-15 12:25.</p></header>
+<p>Minority of bets, majority of the money. Generated 2026-11-15 15:29.</p></header>
 <div class="wrap">
 <div class="tabs" id="tabs"></div>
 <div id="panes"></div>
 </div>
 <script>
-const DATA = {"sports": ["nfl", "ncaaf", "mlb", "nba"], "labels": {"nfl": "NFL", "ncaaf": "NCAAF", "mlb": "MLB", "nba": "NBA"}, "poolSport": "nfl", "mobmom": [{"sport": "nfl", "game": "LAC@BAL", "kick": "mon 8:15pm", "bet": "BAL -4.5", "betType": "SpreadFAVORITE", "rec": false, "fade": false, "record": "45-56", "win": 44.6, "n": 101}, {"sport": "nba", "game": "NYK@TOR", "kick": "sun 6:00pm", "bet": "TOR +4.5", "betType": "SpreadUnderdog", "rec": false, "fade": false, "record": "3-3", "win": 50.0, "n": 6}], "skipped": [{"sport": "nfl", "reason": "MOBMOM instances found, but none match a bet type with a proven NFL tendency", "games": 36, "mobmom": 1}, {"sport": "ncaaf", "reason": "no MOBMOM instance on the upcoming slate", "games": 3, "mobmom": 0}, {"sport": "mlb", "reason": "no upcoming games captured for this sport", "games": 0, "mobmom": 0}, {"sport": "nba", "reason": "MOBMOM instances found, but none match a bet type with a proven NBA tendency", "games": 27, "mobmom": 1}], "survival": [{"team": "DET", "opp": "NE", "win": 98.7}, {"team": "JAC", "opp": "TEN", "win": 83.0}, {"team": "LA", "opp": "ARI", "win": 80.5}, {"team": "BUF", "opp": "NYJ", "win": 79.6}, {"team": "SEA", "opp": "LV", "win": 71.8}, {"team": "BAL", "opp": "LAC", "win": 66.4}, {"team": "IND", "opp": "MIA", "win": 65.8}, {"team": "SF", "opp": "DAL", "win": 65.8}, {"team": "HOU", "opp": "CLE", "win": 63.7}, {"team": "CIN", "opp": "PIT", "win": 63.1}, {"team": "KC", "opp": "ATL", "win": 61.4}, {"team": "GB", "opp": "MIN", "win": 57.5}], "survivalPick": "BUF", "pickem": []};
+const DATA = {"sports": ["nfl", "ncaaf", "mlb", "nba"], "labels": {"nfl": "NFL", "ncaaf": "NCAAF", "mlb": "MLB", "nba": "NBA"}, "poolSport": "nfl", "mobmom": [{"sport": "nfl", "game": "LAC@BAL", "kick": "mon 8:15pm", "bet": "BAL -4.5", "betType": "SpreadFAVORITE", "rec": false, "fade": false, "record": "45-56", "win": 44.6, "n": 101}, {"sport": "nba", "game": "DAL@BOS", "kick": "sun 6:00pm", "bet": "BOS -14.5", "betType": "SpreadFAVORITE", "rec": false, "fade": false, "record": "2-1", "win": 66.7, "n": 3}], "skipped": [{"sport": "nfl", "reason": "MOBMOM instances found, but none match a bet type with a proven NFL tendency", "games": 15, "mobmom": 1}, {"sport": "ncaaf", "reason": "no upcoming games captured for this sport", "games": 0, "mobmom": 0}, {"sport": "mlb", "reason": "no upcoming games captured for this sport", "games": 0, "mobmom": 0}, {"sport": "nba", "reason": "MOBMOM instances found, but none match a bet type with a proven NBA tendency", "games": 24, "mobmom": 1}], "survival": [{"team": "JAC", "opp": "TEN", "win": 89.0}, {"team": "IND", "opp": "MIA", "win": 83.5}, {"team": "BUF", "opp": "NYJ", "win": 81.4}, {"team": "LA", "opp": "ARI", "win": 80.0}, {"team": "SEA", "opp": "LV", "win": 71.8}, {"team": "KC", "opp": "ATL", "win": 70.8}, {"team": "BAL", "opp": "LAC", "win": 66.4}, {"team": "SF", "opp": "DAL", "win": 65.1}, {"team": "CIN", "opp": "PIT", "win": 63.5}, {"team": "DET", "opp": "NE", "win": 57.3}, {"team": "GB", "opp": "MIN", "win": 57.3}, {"team": "CAR", "opp": "NO", "win": 56.4}], "survivalPick": "LA", "cards": [{"away": "LA", "home": "ARI", "kick": "Sun 4:05pm", "sort": "2026-11-15T16:05:00-05:00", "done": false, "bets": 59695.0, "score": null, "rows": [{"team": "LA", "cells": [{"line": "-9.5", "odds": "-115", "b": 76.0, "m": 77.0, "mob": false}, {"line": "o38.5", "odds": "-110", "b": 67.0, "m": 70.0, "mob": false}, {"line": "", "odds": "-505", "b": 97.0, "m": 94.0, "mob": false}]}, {"team": "ARI", "cells": [{"line": "+9.5", "odds": "-105", "b": 24.0, "m": 23.0, "mob": false}, {"line": "u38.5", "odds": "-110", "b": 33.0, "m": 30.0, "mob": false}, {"line": "", "odds": "+380", "b": 3.0, "m": 6.0, "mob": false}]}], "mobs": []}, {"away": "SEA", "home": "LV", "kick": "Sun 4:05pm", "sort": "2026-11-15T16:05:00-05:00", "done": false, "bets": 71843.0, "score": null, "rows": [{"team": "SEA", "cells": [{"line": "-6.5", "odds": "-110", "b": 74.0, "m": 81.0, "mob": false}, {"line": "o40.5", "odds": "-110", "b": 74.0, "m": 70.0, "mob": false}, {"line": "", "odds": "-296", "b": 95.0, "m": 97.0, "mob": false}]}, {"team": "LV", "cells": [{"line": "+6.5", "odds": "-110", "b": 26.0, "m": 19.0, "mob": false}, {"line": "u40.5", "odds": "-110", "b": 26.0, "m": 30.0, "mob": false}, {"line": "", "odds": "+240", "b": 5.0, "m": 3.0, "mob": false}]}], "mobs": []}, {"away": "SF", "home": "DAL", "kick": "Sun 4:25pm", "sort": "2026-11-15T16:25:00-05:00", "done": false, "bets": 80259.0, "score": null, "rows": [{"team": "SF", "cells": [{"line": "-4.5", "odds": "-107", "b": 69.0, "m": 54.0, "mob": false}, {"line": "o55.5", "odds": "-116", "b": 73.0, "m": 80.0, "mob": false}, {"line": "", "odds": "-210", "b": 94.0, "m": 89.0, "mob": false}]}, {"team": "DAL", "cells": [{"line": "+4.5", "odds": "-112", "b": 31.0, "m": 46.0, "mob": false}, {"line": "u55.5", "odds": "-108", "b": 27.0, "m": 20.0, "mob": false}, {"line": "", "odds": "+175", "b": 6.0, "m": 11.0, "mob": false}]}], "mobs": []}, {"away": "PIT", "home": "CIN", "kick": "Sun 8:20pm", "sort": "2026-11-15T20:20:00-05:00", "done": false, "bets": 59721.0, "score": null, "rows": [{"team": "PIT", "cells": [{"line": "+3.5", "odds": "-110", "b": 47.0, "m": 53.0, "mob": false}, {"line": "o49.5", "odds": "-105", "b": 69.0, "m": 76.0, "mob": false}, {"line": "", "odds": "+162", "b": 15.0, "m": 11.0, "mob": false}]}, {"team": "CIN", "cells": [{"line": "-3.5", "odds": "-110", "b": 53.0, "m": 47.0, "mob": false}, {"line": "u49.5", "odds": "-115", "b": 31.0, "m": 24.0, "mob": false}, {"line": "", "odds": "-197", "b": 85.0, "m": 89.0, "mob": false}]}], "mobs": []}, {"away": "LAC", "home": "BAL", "kick": "Mon 8:15pm", "sort": "2026-11-16T20:15:00-05:00", "done": false, "bets": 15060.0, "score": null, "rows": [{"team": "LAC", "cells": [{"line": "+4.5", "odds": "-109", "b": 63.0, "m": 40.0, "mob": false}, {"line": "o38.5", "odds": "-115", "b": 71.0, "m": 67.0, "mob": false}, {"line": "", "odds": "+185", "b": 18.0, "m": 36.0, "mob": false}]}, {"team": "BAL", "cells": [{"line": "-4.5", "odds": "-110", "b": 37.0, "m": 60.0, "mob": true, "betType": "SpreadFAVORITE", "record": "45-56", "win": 44.6, "n": 101, "bets": 37.0, "money": 60.0, "bet": "BAL -4.5"}, {"line": "u38.5", "odds": "-106", "b": 29.0, "m": 33.0, "mob": false}, {"line": "", "odds": "-227", "b": 82.0, "m": 64.0, "mob": false}]}], "mobs": [{"betType": "SpreadFAVORITE", "record": "45-56", "win": 44.6, "n": 101, "bets": 37.0, "money": 60.0, "bet": "BAL -4.5"}]}, {"away": "WAS", "home": "NYG", "kick": "Thu 8:15pm", "sort": "2026-11-12T20:15:00-05:00", "done": true, "bets": 156504.0, "score": [24.0, 21.0], "rows": [{"team": "WAS", "cells": [{"line": "+1.5", "odds": "-110", "b": 45.0, "m": 65.0, "mob": true, "betType": "SpreadUnderdog", "record": "142-102", "win": 58.2, "n": 244, "bets": 45.0, "money": 65.0, "bet": "WAS +1.5"}, {"line": "o40.5", "odds": "-115", "b": 56.0, "m": 53.0, "mob": false}, {"line": "", "odds": "+105", "b": 25.0, "m": 46.0, "mob": false}]}, {"team": "NYG", "cells": [{"line": "-1.5", "odds": "-110", "b": 55.0, "m": 35.0, "mob": false}, {"line": "u40.5", "odds": "-110", "b": 44.0, "m": 47.0, "mob": false}, {"line": "", "odds": "-125", "b": 75.0, "m": 54.0, "mob": false}]}], "mobs": [{"betType": "SpreadUnderdog", "record": "142-102", "win": 58.2, "n": 244, "bets": 45.0, "money": 65.0, "bet": "WAS +1.5"}]}, {"away": "NE", "home": "DET", "kick": "Sun 9:30am", "sort": "2026-11-15T09:30:00-05:00", "done": true, "bets": 80486.0, "score": [10.0, 35.0], "rows": [{"team": "NE", "cells": [{"line": "+2.5", "odds": "-102", "b": 47.0, "m": 42.0, "mob": false}, {"line": "o50.5", "odds": "-119", "b": 15.0, "m": 17.0, "mob": false}, {"line": "", "odds": "+125", "b": 17.0, "m": 12.0, "mob": false}]}, {"team": "DET", "cells": [{"line": "-2.5", "odds": "-119", "b": 53.0, "m": 58.0, "mob": false}, {"line": "u50.5", "odds": "-102", "b": 85.0, "m": 83.0, "mob": false}, {"line": "", "odds": "-148", "b": 83.0, "m": 88.0, "mob": false}]}], "mobs": []}, {"away": "BUF", "home": "NYJ", "kick": "Sun 1:00pm", "sort": "2026-11-15T13:00:00-05:00", "done": true, "bets": 66380.0, "score": null, "rows": [{"team": "BUF", "cells": [{"line": "-7.5", "odds": "-110", "b": 92.0, "m": 90.0, "mob": false}, {"line": "o50.5", "odds": "-116", "b": 61.0, "m": 73.0, "mob": false}, {"line": "", "odds": "-492", "b": 99.0, "m": 98.0, "mob": false}]}, {"team": "NYJ", "cells": [{"line": "+7.5", "odds": "-110", "b": 8.0, "m": 10.0, "mob": false}, {"line": "u50.5", "odds": "-105", "b": 39.0, "m": 27.0, "mob": false}, {"line": "", "odds": "+369", "b": 1.0, "m": 2.0, "mob": false}]}], "mobs": []}, {"away": "CAR", "home": "NO", "kick": "Sun 1:00pm", "sort": "2026-11-15T13:00:00-05:00", "done": true, "bets": 60523.0, "score": null, "rows": [{"team": "CAR", "cells": [{"line": "+1.5", "odds": "-118", "b": 70.0, "m": 78.0, "mob": false}, {"line": "o48.5", "odds": "-117", "b": 61.0, "m": 64.0, "mob": false}, {"line": "", "odds": "-110", "b": 51.0, "m": 73.0, "mob": false}]}, {"team": "NO", "cells": [{"line": "-1.5", "odds": "-100", "b": 30.0, "m": 22.0, "mob": false}, {"line": "u48.5", "odds": "-105", "b": 39.0, "m": 36.0, "mob": false}, {"line": "", "odds": "-108", "b": 49.0, "m": 27.0, "mob": false}]}], "mobs": []}, {"away": "HOU", "home": "CLE", "kick": "Sun 1:00pm", "sort": "2026-11-15T13:00:00-05:00", "done": true, "bets": 50456.0, "score": null, "rows": [{"team": "HOU", "cells": [{"line": "-3.5", "odds": "-109", "b": 67.0, "m": 63.0, "mob": false}, {"line": "o41", "odds": "-113", "b": 59.0, "m": 61.0, "mob": false}, {"line": "", "odds": "-199", "b": 91.0, "m": 95.0, "mob": false}]}, {"team": "CLE", "cells": [{"line": "+3.5", "odds": "-107", "b": 33.0, "m": 37.0, "mob": false}, {"line": "u41", "odds": "-110", "b": 41.0, "m": 39.0, "mob": false}, {"line": "", "odds": "+164", "b": 9.0, "m": 5.0, "mob": false}]}], "mobs": []}, {"away": "JAC", "home": "TEN", "kick": "Sun 1:00pm", "sort": "2026-11-15T13:00:00-05:00", "done": true, "bets": 61190.0, "score": null, "rows": [{"team": "JAC", "cells": [{"line": "-10.5", "odds": "-110", "b": 88.0, "m": 87.0, "mob": false}, {"line": "o45.5", "odds": "-111", "b": 64.0, "m": 74.0, "mob": false}, {"line": "", "odds": "-625", "b": 99.0, "m": 98.0, "mob": false}]}, {"team": "TEN", "cells": [{"line": "+10.5", "odds": "-108", "b": 12.0, "m": 13.0, "mob": false}, {"line": "u45.5", "odds": "-110", "b": 36.0, "m": 26.0, "mob": false}, {"line": "", "odds": "+465", "b": 1.0, "m": 2.0, "mob": false}]}], "mobs": []}, {"away": "KC", "home": "ATL", "kick": "Sun 1:00pm", "sort": "2026-11-15T13:00:00-05:00", "done": true, "bets": 61382.0, "score": null, "rows": [{"team": "KC", "cells": [{"line": "-3.5", "odds": "-107", "b": 79.0, "m": 62.0, "mob": false}, {"line": "o47.5", "odds": "-106", "b": 59.0, "m": 70.0, "mob": false}, {"line": "", "odds": "-177", "b": 96.0, "m": 91.0, "mob": false}]}, {"team": "ATL", "cells": [{"line": "+3.5", "odds": "-112", "b": 21.0, "m": 38.0, "mob": false}, {"line": "u47.5", "odds": "-112", "b": 41.0, "m": 30.0, "mob": false}, {"line": "", "odds": "+149", "b": 4.0, "m": 9.0, "mob": false}]}], "mobs": []}, {"away": "MIA", "home": "IND", "kick": "Sun 1:00pm", "sort": "2026-11-15T13:00:00-05:00", "done": true, "bets": 43641.0, "score": null, "rows": [{"team": "MIA", "cells": [{"line": "+4.5", "odds": "-111", "b": 43.0, "m": 39.0, "mob": false}, {"line": "o37.5", "odds": "-110", "b": 63.0, "m": 57.0, "mob": false}, {"line": "", "odds": "+180", "b": 14.0, "m": 17.0, "mob": false}]}, {"team": "IND", "cells": [{"line": "-4.5", "odds": "-109", "b": 57.0, "m": 61.0, "mob": false}, {"line": "u37.5", "odds": "-110", "b": 37.0, "m": 43.0, "mob": false}, {"line": "", "odds": "-220", "b": 86.0, "m": 83.0, "mob": false}]}], "mobs": []}, {"away": "MIN", "home": "GB", "kick": "Sun 1:00pm", "sort": "2026-11-15T13:00:00-05:00", "done": true, "bets": 68940.0, "score": null, "rows": [{"team": "MIN", "cells": [{"line": "+2.5", "odds": "-100", "b": 44.0, "m": 47.0, "mob": false}, {"line": "o42.5", "odds": "-106", "b": 63.0, "m": 70.0, "mob": false}, {"line": "", "odds": "+125", "b": 19.0, "m": 38.0, "mob": false}]}, {"team": "GB", "cells": [{"line": "-2.5", "odds": "-120", "b": 56.0, "m": 53.0, "mob": false}, {"line": "u42.5", "odds": "-111", "b": 37.0, "m": 30.0, "mob": false}, {"line": "", "odds": "-151", "b": 81.0, "m": 62.0, "mob": false}]}], "mobs": []}], "cardMarkets": ["Spread", "Total", "ML"], "cardWeek": "10"};
 function tbl(cols, rows, render, empty){
   if(!rows.length) return '<div class="empty">'
     + (empty || 'Nothing on the board.') + '</div>';
@@ -75,20 +99,47 @@ function mobmomSec(sp){
         <td class="b">${r.bet}</td><td>${r.betType}${r.fade?' <span class="tag">vs MOBMOM</span>':''}</td>
         <td>${r.record}</td><td>${r.win}%</td><td>${r.n}</td></tr>`, why));
 }
+// One card per game of the CURRENT NFL WEEK, in kickoff order, finished games last.
+// The board above is bet-grain and lists only MOBMOM sides; a card is game-grain and
+// prints every price with its bet%/money% split underneath, so the MOBMOM side can be
+// read against the side opposite it. Win% / record / n hang off the MOBMOM cell only:
+// that record belongs to the BET TYPE, and showing it on a non-MOBMOM side would imply
+// a tendency nothing has measured.
+function cell(c){
+  if(!c) return '<td class="na">&mdash;</td>';
+  return '<td' + (c.mob ? ' class="mobc"' : '') + '>'
+    + '<div class="ln">' + (c.line ? c.line + ' ' : '')
+    + '<span class="od">' + c.odds + '</span></div>'
+    + '<div class="sp">' + (c.b == null ? '' : c.b + '% / ' + c.m + '%') + '</div></td>';
+}
+function cardsSec(){
+  const inner = DATA.cards.map(g => {
+    const hd = (g.score ? 'Final ' + g.score[0] + '&ndash;' + g.score[1]
+                        : (g.bets ? g.bets.toLocaleString() + ' bets' : ''));
+    const foot = g.mobs.map(s =>
+      '<div class="mobf"><span class="lbl">MOBMOM</span>'
+      + '<span class="num">' + s.bet + '</span> '
+      + '<span class="sub">(' + s.betType + ') &middot; ' + s.bets + '% of bets, '
+      + s.money + '% of money &middot; this bet is </span>'
+      + '<span class="num">' + s.record + ', ' + s.win + '%</span>'
+      + '<span class="sub"> over ' + s.n + ' bets</span></div>').join('');
+    return '<div class="gm' + (g.done ? ' fin' : '') + '">'
+      + '<div class="gmh"><span class="k">' + g.kick + '</span><span>' + hd + '</span></div>'
+      + '<table class="gmt"><thead><tr><th></th>'
+      + DATA.cardMarkets.map(m => '<th>' + m + '</th>').join('')
+      + '</tr></thead><tbody>'
+      + g.rows.map(r => '<tr><td class="tm">' + r.team + '</td>'
+          + r.cells.map(cell).join('') + '</tr>').join('')
+      + '</tbody></table>' + foot + '</div>';
+  }).join('');
+  return sec('Slate &mdash; Week ' + DATA.cardWeek,
+    inner || '<div class="empty">No NFL games captured for this week.</div>');
+}
 function survivalSec(){
   return sec('Survival &mdash; best team to ride',
     (DATA.survivalPick?`<div class="note">Recommended ride: <span class="pill">${DATA.survivalPick}</span></div>`:'')
     + tbl(['Team','Opponent','Win %'], DATA.survival,
       r=>`<tr><td class="b">${r.team}</td><td>${r.opp}</td><td>${r.win}%</td></tr>`));
-}
-function pickemSec(){
-  return sec("Pick'em &mdash; spread card", tbl(
-    ['','Game','Bet','Bet Type','Record','Win %','N'], DATA.pickem,
-    r=>`<tr><td>${r.best_bet?'<span class="pill">BEST BET</span>':''}</td>
-        <td>${r.game}</td><td class="b">${r.bet}</td>
-        <td>${r.betType}${r.fade?' <span class="tag">vs MOBMOM</span>':''}</td>
-        <td>${r.record}</td><td>${r.win}%</td><td>${r.n}</td></tr>`,
-    'No spread pick clears the gate this week.'));
 }
 const tabs=document.getElementById('tabs'), panes=document.getElementById('panes');
 DATA.sports.forEach((sp,i)=>{
@@ -97,8 +148,10 @@ DATA.sports.forEach((sp,i)=>{
   tabs.appendChild(b);
   const d=document.createElement('div');
   d.className='pane'+(i?' hide':''); d.id='sp-'+sp;
-  // Survival and Pick'em are weekly-pool formats and only exist for the NFL.
-  d.innerHTML = mobmomSec(sp) + (sp===DATA.poolSport ? survivalSec()+pickemSec() : '');
+  // Survival is a weekly-pool format and only exists for the NFL. The cards are
+  // NFL-only for the same reason: a one-week, one-league analysis surface.
+  d.innerHTML = mobmomSec(sp)
+    + (sp===DATA.poolSport ? cardsSec()+survivalSec() : '');
   panes.appendChild(d);
 });
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
