@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MOBMOM Engine — Weekly Picks</title>
+<style>
+:root{--navy:#1f3a5f;--blue:#2e5a88;--lblue:#dce6f1;--ink:#1b2430;--mut:#6b7785}
+*{box-sizing:border-box}body{margin:0;font:15px/1.45 -apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:#f4f6f9}
+header{background:var(--navy);color:#fff;padding:22px 20px}
+header h1{margin:0;font-size:22px}header p{margin:6px 0 0;color:#c7d4e6;font-size:13px}
+.wrap{max-width:980px;margin:0 auto;padding:18px 16px}
+.tabs{display:flex;gap:6px;margin:14px 0 0}
+.tab{padding:9px 18px;border:0;border-radius:8px 8px 0 0;background:#e4e9f0;color:var(--mut);font-weight:700;cursor:pointer;font-size:14px}
+.tab.on{background:#fff;color:var(--navy);box-shadow:0 -3px 0 var(--blue) inset}
+.card{background:#fff;border-radius:0 10px 10px 10px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow:hidden;margin-bottom:18px}
+h2{margin:0;padding:13px 14px;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--navy);border-bottom:1px solid #eef1f5}
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px 12px;text-align:center;border-bottom:1px solid #eef1f5;font-size:14px}
+th{background:var(--lblue);color:var(--navy);font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.tier{font-weight:700;padding:2px 8px;border-radius:6px;font-size:12px}
+.High{background:#c6efce;color:#155724}.Med{background:#fff2cc;color:#7a5b00}.Low{background:#eef1f5;color:#555}
+.empty{padding:22px;color:var(--mut);text-align:center;font-size:13px}
+.note{color:var(--mut);font-size:12px;padding:12px 14px;text-align:center}
+.why{color:var(--mut);font-size:12px;max-width:330px;text-align:left}
+.hide{display:none}.pill{background:var(--navy);color:#fff;border-radius:20px;padding:2px 9px;font-size:12px}
+.b{font-weight:700}
+/* The cutoff row and everything under it: MOBMOM instances that did NOT clear the
+   gate. Dimmed, never hidden -- they are shown on purpose. */
+.cut td{background:var(--lblue);color:var(--navy);font-size:12px;text-transform:uppercase;letter-spacing:.03em;font-weight:700}
+.off td{color:#97a1ad}.off td.b{font-weight:400}
+/* Marks a pick taken AGAINST the MOBMOM side, because that signal's own record
+   going with it is a proven loser. */
+.tag{border:1px solid var(--navy);border-radius:3px;padding:1px 5px;font-size:10px;
+     text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+</style></head><body>
+<header><h1>MOBMOM Engine — Weekly Picks</h1>
+<p>Minority of bets, majority of the money. Generated 2026-11-15 12:10.</p></header>
+<div class="wrap">
+<div class="tabs" id="tabs"></div>
+<div id="panes"></div>
+</div>
+<script>
+const DATA = {"sports": ["nfl", "ncaaf", "mlb", "nba"], "labels": {"nfl": "NFL", "ncaaf": "NCAAF", "mlb": "MLB", "nba": "NBA"}, "poolSport": "nfl", "mobmom": [{"sport": "nfl", "game": "LAC@BAL", "kick": "mon 8:15pm", "bet": "BAL -4.5", "betType": "SpreadFAVORITE", "rec": false, "fade": false, "record": "45-56", "win": 44.6, "n": 101}, {"sport": "nba", "game": "NYK@TOR", "kick": "sun 6:00pm", "bet": "TOR +4.5", "betType": "SpreadUnderdog", "rec": false, "fade": false, "record": "3-3", "win": 50.0, "n": 6}], "skipped": [{"sport": "nfl", "reason": "MOBMOM instances found, but none match a bet type with a proven NFL tendency", "games": 36, "mobmom": 1}, {"sport": "ncaaf", "reason": "no MOBMOM instance on the upcoming slate", "games": 3, "mobmom": 0}, {"sport": "mlb", "reason": "no upcoming games captured for this sport", "games": 0, "mobmom": 0}, {"sport": "nba", "reason": "MOBMOM instances found, but none match a bet type with a proven NBA tendency", "games": 27, "mobmom": 1}], "survival": [{"team": "DET", "opp": "NE", "win": 98.5}, {"team": "JAC", "opp": "TEN", "win": 83.2}, {"team": "LA", "opp": "ARI", "win": 80.2}, {"team": "BUF", "opp": "NYJ", "win": 79.8}, {"team": "SEA", "opp": "LV", "win": 71.8}, {"team": "BAL", "opp": "LAC", "win": 66.4}, {"team": "IND", "opp": "MIA", "win": 65.8}, {"team": "SF", "opp": "DAL", "win": 65.8}, {"team": "HOU", "opp": "CLE", "win": 63.7}, {"team": "CIN", "opp": "PIT", "win": 63.1}, {"team": "KC", "opp": "ATL", "win": 61.5}, {"team": "GB", "opp": "MIN", "win": 57.5}], "survivalPick": "BUF", "pickem": []};
+function tbl(cols, rows, render, empty){
+  if(!rows.length) return '<div class="empty">'
+    + (empty || 'Nothing on the board.') + '</div>';
+  let h='<table><thead><tr>'+cols.map(c=>'<th>'+c+'</th>').join('')+'</tr></thead><tbody>';
+  return h+rows.map(render).join('')+'</tbody></table>';
+}
+function sec(title, inner){
+  return '<div class="card"><h2>'+title+'</h2>'+inner+'</div>';
+}
+// MOBMOM board for one sport. Deliberately ENDS at the tendency numbers: record,
+// win% and sample size, each in its own column. The prose rationale and the
+// worst-case bound used to sit to the right of these and crowded out the only
+// three figures that decide anything. Same shape for all four sports.
+//
+// EVERY MOBMOM instance is listed, ranked, with a single cutoff row where the
+// recommendations stop. Below it are real MOBMOMs the engine declined -- showing
+// them is the point: an omitted game is indistinguishable from a capture failure,
+// and the rejects are what make the accepted ones mean something.
+function mobmomSec(sp){
+  const rows = DATA.mobmom.filter(r=>r.sport===sp);
+  const sk = DATA.skipped.find(s=>s.sport===sp);
+  const why = sk ? sk.reason + ' (' + sk.games + ' games on the board, '
+    + sk.mobmom + ' MOBMOM).' : 'No MOBMOM on the upcoming slate.';
+  const nrec = rows.filter(r=>r.rec).length;
+  return sec('MOBMOM Bets', tbl(
+    ['Game','Kickoff','Bet','Bet Type','Record','Win %','N'], rows,
+    (r,i)=>(i===nrec?`<tr class="cut"><td colspan="7">`
+        + (nrec?'Below the line &mdash; MOBMOM, but not a recommendation'
+               :'No recommendations &mdash; every MOBMOM below is one the engine passed on')
+        + `</td></tr>`:'')
+      + `<tr${r.rec?'':' class="off"'}><td>${r.game}</td><td>${r.kick||''}</td>
+        <td class="b">${r.bet}</td><td>${r.betType}${r.fade?' <span class="tag">vs MOBMOM</span>':''}</td>
+        <td>${r.record}</td><td>${r.win}%</td><td>${r.n}</td></tr>`, why));
+}
+function survivalSec(){
+  return sec('Survival &mdash; best team to ride',
+    (DATA.survivalPick?`<div class="note">Recommended ride: <span class="pill">${DATA.survivalPick}</span></div>`:'')
+    + tbl(['Team','Opponent','Win %'], DATA.survival,
+      r=>`<tr><td class="b">${r.team}</td><td>${r.opp}</td><td>${r.win}%</td></tr>`));
+}
+function pickemSec(){
+  return sec("Pick'em &mdash; spread card", tbl(
+    ['','Game','Bet','Bet Type','Record','Win %','N'], DATA.pickem,
+    r=>`<tr><td>${r.best_bet?'<span class="pill">BEST BET</span>':''}</td>
+        <td>${r.game}</td><td class="b">${r.bet}</td>
+        <td>${r.betType}${r.fade?' <span class="tag">vs MOBMOM</span>':''}</td>
+        <td>${r.record}</td><td>${r.win}%</td><td>${r.n}</td></tr>`,
+    'No spread pick clears the gate this week.'));
+}
+const tabs=document.getElementById('tabs'), panes=document.getElementById('panes');
+DATA.sports.forEach((sp,i)=>{
+  const b=document.createElement('button');
+  b.className='tab'+(i?'':' on'); b.textContent=DATA.labels[sp]; b.dataset.t=sp;
+  tabs.appendChild(b);
+  const d=document.createElement('div');
+  d.className='pane'+(i?' hide':''); d.id='sp-'+sp;
+  // Survival and Pick'em are weekly-pool formats and only exist for the NFL.
+  d.innerHTML = mobmomSec(sp) + (sp===DATA.poolSport ? survivalSec()+pickemSec() : '');
+  panes.appendChild(d);
+});
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.add('hide'));
+  b.classList.add('on');document.getElementById('sp-'+b.dataset.t).classList.remove('hide');
+});
+</script></body></html>
